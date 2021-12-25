@@ -11,6 +11,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
  final _formKey=GlobalKey<FormState>();
 
+ final List aman=[
+  {"aman":"1234"},
+  {"anuj":"3435"}
+ ];
+
  final TextEditingController emailController=new TextEditingController();
 final TextEditingController passwordController=new TextEditingController();
   @override
@@ -48,6 +53,23 @@ final passwordFeild=TextFormField(
   ),
 );
 
+final loginButton=Material(
+  elevation: 5,
+  borderRadius: BorderRadius.circular(10),
+  color:Colors.red[400],
+  child: MaterialButton(
+    padding:const EdgeInsets.all(20),
+    minWidth: MediaQuery.of(context).size.width,
+    onPressed: (){},
+    child:const Text('Login',textAlign: TextAlign.center,
+     style: TextStyle(
+       color: Colors.white,
+       fontWeight: FontWeight.bold,
+       fontSize: 15,
+     ),),
+  ),
+);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -55,13 +77,41 @@ final passwordFeild=TextFormField(
           child: SingleChildScrollView(
             child: Container(
               color: Colors.white,
-              child:Form(
-                key: _formKey,
-                child: Column(children: [
-                  emailField,
-                const  SizedBox(height: 20),
-                  passwordFeild
-                ],),
+              child:Padding(
+                padding: const EdgeInsets.all(34),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                  const  SizedBox(
+                      height: 200,
+                      child:Image(image: NetworkImage('https://images.unsplash.com/photo-1640404880570-2b61bf155ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'),),
+                    ),
+                   const SizedBox(height: 20,),
+                    emailField,
+                  const  SizedBox(height: 20),
+                    passwordFeild,
+                    loginButton,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      const Text('Dont have an account ?'),
+                      GestureDetector(
+                        onTap: (){
+                          print(aman);
+                        },
+                        child:const Text('SignUp',style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red
+                        ),
+                        ) ,
+                        )
+                      ],
+                    )
+                  ],),
+                ),
               ),
             ),
           ),
