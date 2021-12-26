@@ -1,3 +1,4 @@
+import 'package:aman/screens/registration_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -100,7 +101,7 @@ final loginButton=Material(
                       const Text('Dont have an account ?'),
                       GestureDetector(
                         onTap: (){
-                          print(aman);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));
                         },
                         child:const Text('SignUp',style: TextStyle(
                         fontWeight: FontWeight.bold,
