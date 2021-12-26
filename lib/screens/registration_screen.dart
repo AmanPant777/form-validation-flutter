@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 final firstNameField=TextFormField(
   controller: firstNameEditingController,
-  keyboardType: TextInputType.emailAddress,
+  keyboardType: TextInputType.name,
   autofocus: false,
   onSaved: (value){
     firstNameEditingController.text=value.toString();
@@ -41,11 +41,11 @@ final firstNameField=TextFormField(
 
 
 final lastNameField=TextFormField(
-  controller: firstNameEditingController,
-  keyboardType: TextInputType.emailAddress,
+  controller: secondNameEditingController,
+  keyboardType: TextInputType.name,
   autofocus: false,
   onSaved: (value){
-    firstNameEditingController.text=value.toString();
+    secondNameEditingController.text=value.toString();
   },
   textInputAction: TextInputAction.next,
   decoration: InputDecoration(
@@ -57,11 +57,11 @@ final lastNameField=TextFormField(
 );
 
 final emailField=TextFormField(
-  controller: firstNameEditingController,
+  controller: emailEditingController,
   keyboardType: TextInputType.emailAddress,
   autofocus: false,
   onSaved: (value){
-    firstNameEditingController.text=value.toString();
+    emailEditingController.text=value.toString();
   },
   textInputAction: TextInputAction.next,
   decoration: InputDecoration(
@@ -73,11 +73,12 @@ final emailField=TextFormField(
 );
 
 final passwordField=TextFormField(
-  controller: firstNameEditingController,
-  keyboardType: TextInputType.emailAddress,
+  controller: passwordEditingController,
+  keyboardType: TextInputType.name,
+  obscureText: true,
   autofocus: false,
   onSaved: (value){
-    firstNameEditingController.text=value.toString();
+    passwordEditingController.text=value.toString();
   },
   textInputAction: TextInputAction.next,
   decoration: InputDecoration(
@@ -89,13 +90,14 @@ final passwordField=TextFormField(
 );
 
 final confirmPasswordField=TextFormField(
-  controller: firstNameEditingController,
+  controller: confirmPasswordEditingController,
   keyboardType: TextInputType.emailAddress,
+  obscureText: true,
   autofocus: false,
   onSaved: (value){
-    firstNameEditingController.text=value.toString();
+    confirmPasswordEditingController.text=value.toString();
   },
-  textInputAction: TextInputAction.next,
+  textInputAction: TextInputAction.done,
   decoration: InputDecoration(
     prefixIcon:const Icon(Icons.vpn_key),
     contentPadding:const EdgeInsets.all(10),
@@ -112,7 +114,7 @@ final confirmPasswordField=TextFormField(
     padding:const EdgeInsets.all(20),
     minWidth: MediaQuery.of(context).size.width,
     onPressed: (){},
-    child:const Text('Login',textAlign: TextAlign.center,
+    child:const Text('Sign Up',textAlign: TextAlign.center,
      style: TextStyle(
        color: Colors.white,
        fontWeight: FontWeight.bold,
@@ -124,8 +126,19 @@ final confirmPasswordField=TextFormField(
 
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back),
+          color: Colors.red,
+        ),
+      ),
       backgroundColor: Colors.white,
-      body: Container(
+      body:Container(      
         child: Center(
           child: Form(
             child: Column(
