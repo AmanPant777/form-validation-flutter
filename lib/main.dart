@@ -1,4 +1,4 @@
-import 'package:aman/home.dart';
+import 'package:aman/screens/home_screen.dart';
 import 'package:aman/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  final bool login=true;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home:  LoginScreen(),
+      home:  login?HomeScreen():LoginScreen(),
     );
   }
 }
